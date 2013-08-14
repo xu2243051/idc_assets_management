@@ -1,0 +1,15 @@
+{% extends "manager/manager_base.html" %}
+{% load manager_tags %}
+{% block title %} {{ block.super }} {% if object %}|修改{{ object }}{% else %}|新增{{ view.model|render_verbose_name }}{% endif %} {% endblock title %}
+{% block page_title %} {{ block.super }} {% if object %}|修改 <strong>{{ object }}</strong>{% else %}|新增{{ view.model|render_verbose_name }}{% endif %}  {% endblock page_title %}
+{% block article %}
+<form  method="post" accept-charset="utf-8">
+    {% csrf_token %}
+    <table class="table table-bordered table-hover table-condensed" >
+    {{form}}
+    </table>
+
+
+<p><input type="submit" value="提交"></p>
+</form>
+{% endblock %}

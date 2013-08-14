@@ -1,0 +1,41 @@
+{% extends "manager/manager_base.html" %}
+{% load manager_tags %}
+{% block title %} {{ block.super }}| 列表 {% endblock title %}
+{% block page_title %}{{block.super}}| 列表{% endblock page_title %}
+{% block article %}
+{% if view.render_btngroups %}
+    {{ view.render_btngroups |safe }}
+    <div class="alert alert-block" id="results">
+    <button type="button" class="close" id="close_results">&times;</button>
+    <p >显示按钮的执行情况</p>
+    </div>
+{% endif %}
+<form action="" method="get" id="base_form" accept-charset="utf-8">
+    
+{{ searchform.as_p }}
+<p><input type="submit" value="确定"></p>
+</form>
+
+{{ view.as_table|safe }}
+<hr />
+<label>请输入文件名: <input type="text" name="download_filename" form="base_form"></label>
+<button type="submit" class="button" name="download" value="current_current" form="base_form">导出数据</button></p>
+<!--
+<p><button type="submit" class="button" name="download" value="current_current" form="base_form">导出当前行当前字段</button></p>
+<p><button type="submit" class="button" name="download" value="current_all" form="base_form">导出当前行全部字段</button></p>
+<p><button type="submit" class="button" name="download" value="all_all" form="base_form">导出全部数据</button></p>
+-->
+{% endblock %}
+
+
+{% block rside %}
+{% if field_name_select_form %}
+    {{ field_name_select_form}} 
+    <p><input type="submit" value="确定" form="base_form"></p>
+{% endif %}
+{% endblock rside %}
+
+{% block extra_js %}
+    {% load static %}
+    <!--script src="{% static 'js/inputdate_command.js' %}"></script-->
+{% endblock extra_js %}

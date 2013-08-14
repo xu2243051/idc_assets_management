@@ -1,0 +1,12 @@
+{% extends "manager/manager_base.html" %}
+{% load manager_tags %}
+{% block title %} {{ block.super }}|{{ view.model |render_verbose_name }}|{{ object }}|删除{{ object }} {% endblock title %}
+{% block article %}
+<form action="" method="post">{% csrf_token %}
+    <p>是否确定要删除 <strong>{{ object }}</strong> </p>
+    <p class="text-warning">删除之后，将无法再列表中查看到</p>
+    <input type="hidden" name="post" value="yes" />
+    <input type="submit" value="确定" />
+    <input type="button" value="返回" onclick="window.history.back()" />
+</form>
+{% endblock %}

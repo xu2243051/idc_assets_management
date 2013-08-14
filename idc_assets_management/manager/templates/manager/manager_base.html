@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load manager_tags %}
+{% block title %} {{block.super}} | {{ view.model |render_verbose_name }}{% endblock title %}
+{% block page_title %} {{block.super}} | {{ view.model |render_verbose_name }}  {% endblock page_title %}
+{% block lside %}
+<ul class="nav nav-pills nav-stacked">
+    <li><a href="{{ view.model| render_create_link}}">新增{{ view.model |render_verbose_name }}</a></li>
+    <li><a href="{{ view.model| render_list_link}}">{{ view.model |render_verbose_name }}列表</a></li>
+    <li><a href="{{ view.model| render_upload_link}}"><strong>文件导入</strong>{{ view.model |render_verbose_name }}</a></li>
+</ul>
+{% endblock %}

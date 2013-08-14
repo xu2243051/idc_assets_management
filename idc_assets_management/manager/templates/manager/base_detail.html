@@ -1,0 +1,11 @@
+{% extends "manager/manager_base.html" %}
+{% load manager_tags %}
+{% block title %} {{ block.super }}|{{ view.model |render_verbose_name }}|{{ object }} {% endblock title %}
+{% block page_title %} {{ object }} {% endblock page_title %}
+{% block article %}
+{% for key, value in object.get_fields %}
+<p>{{ key }} : {{ value }}<p>
+{%endfor%}
+<a href="{{ object.get_update_url }}">修改</a>
+<a href="{{ object.get_delete_url }}">删除</a>
+{% endblock %}

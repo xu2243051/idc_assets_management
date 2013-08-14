@@ -1,0 +1,31 @@
+{% extends "manager/manager_base.html" %}
+{% load manager_tags %}
+{% block title %} {{ block.super }} |{{ view.model|render_verbose_name }}| 上传 {% endblock title %}
+{% block page_title %} {{ block.super }} |{{ view.model|render_verbose_name }}| 上传  {% endblock page_title %}
+{% block article %}
+<h2>这是文件上传页面</h2>
+<p>
+上传要求文件是CSV格式  <br \>
+上传的顺序按照增加的格式来写<br \>
+每一行代表增加一个{{ view.model|render_verbose_name }}
+</p>
+
+<p>出错有两种:</p>
+<ul class="errorlist">
+    <li class="error">上传的文件不存在</li>
+    <li class="error">文件的数据不对, 只显示第一个错误的数据</li>
+    <li class="error">每列以","分隔， 逗号前后不要空格， 包含逗号的数据要以双引号包含起来</li>
+    <li class="error">第一列的数据如果相同，以最后一列为准，如果要增加请手动增加</li>
+</ul>
+<br \>
+<br \>
+<form  method="post" accept-charset="utf-8" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+    {{form}}
+    </table>
+
+
+<p><input type="submit" value="确定"></p>
+</form>
+{% endblock %}

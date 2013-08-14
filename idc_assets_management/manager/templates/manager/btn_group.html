@@ -1,0 +1,13 @@
+
+<div class="btn-group">
+    <button class="btn btn-default dropdown-toggle"  type="button"  data-toggle="dropdown">
+        {{ name }}<span class="caret"></span>
+    </button>
+
+    <ul class="dropdown-menu">
+        {% for btn in buttons %}
+        <li><a  class="{% if btn.class %}{{ btn.class }}{% else %}{{ default_class }}{% endif %}" 
+            command="{{ btn.value }}">{{ btn.name }}</a></li>
+        {%endfor%}
+    </ul>
+</div>

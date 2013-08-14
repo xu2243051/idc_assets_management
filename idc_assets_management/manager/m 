@@ -1,0 +1,27 @@
+from manager.models import ComputerRoom
+ComputerRoom.group.get_group('room_name')
+# OUT: Traceback (most recent call last):
+# OUT:   File "<input>", line 1, in <module>
+# OUT: TypeError: unbound method get_group() must be called with GroupManager instance as first argument (got str instance instead)
+ComputerRoom.group.all().get_group('room_name')
+# OUT: Traceback (most recent call last):
+# OUT:   File "<input>", line 1, in <module>
+# OUT: TypeError: unbound method all() must be called with GroupManager instance as first argument (got nothing instead)
+ComputerRoom.group.all()
+# OUT: Traceback (most recent call last):
+# OUT:   File "<input>", line 1, in <module>
+# OUT: TypeError: unbound method all() must be called with GroupManager instance as first argument (got nothing instead)
+ComputerRoom.group
+ComputerRoom.group()
+ComputerRoom.group().all()
+ComputerRoom.group().get_group()
+# OUT: Traceback (most recent call last):
+# OUT:   File "<input>", line 1, in <module>
+# OUT: TypeError: get_group() takes exactly 2 arguments (1 given)
+ComputerRoom.group().get_group('room_name')
+# OUT: Traceback (most recent call last):
+# OUT:   File "<input>", line 1, in <module>
+# OUT:   File "/opt/py_env/xiaojun/idc_assets_management/idc_assets_management/manager/custon_manager.py", line 10, in get_group
+# OUT:     table_name = self._meta.db_table
+# OUT: AttributeError: 'GroupManager' object has no attribute '_meta'
+ComputerRoom.group()
